@@ -5,9 +5,20 @@ namespace MvcMovie.Controllers
 {
     public class HelloWorldController : Controller
     {
-        public string Welcome(string name, int ID = 1)
+        public IActionResult Index()
         {
-            return HtmlEncoder.Default.Encode($"Hello {name}, ID: {ID}");
+            return View();
         }
+
+
+        public IActionResult Welcome(string name, int numTimes = 1)
+        {
+            ViewData["Message"] = "Hello " + name;
+            ViewData["NumTimes"] = numTimes;
+
+
+            return View();
+        }
+
     }
 }
